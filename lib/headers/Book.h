@@ -30,5 +30,7 @@ class Book{
         void renderPage(GLint);
         void renderBook();
         void setBorder();
+        void fillFaces(GLfloat, GLfloat, GLfloat);
 };
+void constructPolygon(GLfloat[][3]);
 #endif

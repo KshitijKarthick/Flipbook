@@ -40,16 +40,7 @@ void Book::setBorder(){
     GLfloat zLimit = z - BOOK_THICKNESS;
     cubeConstruction(x, y, z, xLimit, yLimit, zLimit);
     glColor3f(1,1,1);
-    glBegin(GL_POLYGON);
-        glVertex3f(x, y, zLimit);
-        glNormal3f(x, y, zLimit);
-        glVertex3f(xLimit, y, zLimit);
-        glNormal3f(xLimit, y, zLimit);
-        glVertex3f(xLimit, yLimit, zLimit);
-        glNormal3f(xLimit, yLimit, zLimit);
-        glVertex3f(x, yLimit, zLimit);
-        glNormal3f(x, yLimit, zLimit);
-    glEnd();
+    fillFaces(xLimit, yLimit, zLimit);
 }
 
 /*!
@@ -97,4 +88,44 @@ void Book::renderPage(GLint pageIndex){
         pages[pageIndex]->renderPage();
         currentPageIndex = pageIndex;
     }
+}
+
+/*!
+    \fn constructPolygon()
+    \brief Construct a Polygon for the given vertices
+*/
+void constructPolygon(GLfloat vertices[][3]){
+    glBegin(GL_POLYGON);
+        for(int i=0;i<4;i++){
+            glVertex3f(vertices[i][0],vertices[i][1],vertices[i][2]);
+            glNormal3f(vertices[i][0],vertices[i][1],vertices[i][2]);
+        }
+    glEnd();
+}
+
+/*!
+    \fn fillFaces()
+    \brief Select each face and construct a Polygon
+*/
+void Book::fillFaces(GLfloat xLimit, GLfloat yLimit, GLfloat zLimit){
+    GLfloat backFace[][3]={
+        {x, y, zLimit}, {xLimit, y, zLimit}, {xLimit, yLimit, zLimit}, {x, yLimit, zLimit}
+    };
+    constructPolygon(backFace);
+    GLfloat bottomFace[][3]={
+        {x,y,z},{xLimit,y,z},{xLimit,y,zLimit},{x,y,zLimit}
+    };
+    constructPolygon(bottomFace);
+    GLfloat topFace[][3]={
+        {x,yLimit,z},{xLimit,yLimit,z},{xLimit,yLimit,zLimit},{x,yLimit,zLimit}
+    };
+    constructPolygon(topFace);
+    GLfloat leftFace[][3]={
+        {x,y,z},{x,yLimit,z},{x,yLimit,zLimit},{x,y,zLimit}
+    };
+    constructPolygon(leftFace);
+    GLfloat rightFace[][3]={
+        {xLimit,y,zLimit},{xLimit,yLimit,zLimit},{xLimit,yLimit,z},{xLimit,yLimit,z}
+    };
+    constructPolygon(rightFace);
 }
