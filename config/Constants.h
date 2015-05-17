@@ -52,7 +52,7 @@
 	/def BOOK_THICKNESS
 	/brief Set max book thickness
 */
-#define BOOK_THICKNESS 20
+#define BOOK_THICKNESS 50
 /*!
 	/def BOOK_BORDER_SIZE
 	/brief Set book border size

@@ -150,6 +150,7 @@ void initReshape(int w, int h){
     transformations for flipping the pages, lighting and shading operations.
 */
 void display(){
+    char string1[]="\n The \n   TETRIS  \n Game";
     char string[]="\n\n  Game Over!";
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glLoadIdentity();
@@ -183,19 +184,34 @@ void display(){
             glMaterialfv(GL_FRONT,GL_SPECULAR,mat_specular);
             glMaterialfv(GL_FRONT,GL_SHININESS,mat_shininess);
             /*!< Shading */
-            flipbook->addPage(PAGE_TYPE_DRAWING,square);   
-            flipbook->addPage(PAGE_TYPE_DRAWING,square1);
-            flipbook->addPage(PAGE_TYPE_DRAWING,square2);   
-            flipbook->addPage(PAGE_TYPE_DRAWING,square3);   
-            flipbook->addPage(PAGE_TYPE_DRAWING,square4);
-            flipbook->addPage(PAGE_TYPE_DRAWING,square5); 
-            flipbook->addPage(PAGE_TYPE_DRAWING,square6);
-            flipbook->addPage(PAGE_TYPE_DRAWING,square7);   
-            flipbook->addPage(PAGE_TYPE_DRAWING,square8);
+            flipbook->addPage(PAGE_TYPE_TEXT,string1);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level1);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level2);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level3);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level4);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level5);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level6);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level7);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level8);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level9);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level10);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level11);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level12);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level13);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level14);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level15);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level16);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level17);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level18);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level19);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level20);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level21);
+            flipbook->addPage(PAGE_TYPE_DRAWING,level22);
             flipbook->addPage(PAGE_TYPE_TEXT,string);
             glColor3f(0,0,0);
             if(startFlipping == 0){ /*!< Book laying down on the table */
-                glTranslatef(-80, -140, -150);
+                glTranslatef(-80, -110, -150);
                 glRotatef(-90, 1, 0, 0);
             }
             flipbook->renderBook(); /*!< Render Flipbook */
@@ -331,7 +347,7 @@ void addMenuInteraction(){
     glutAddMenuEntry("Special Flip", 6);
     /*!< Create menu and add entries for mouse interaction */
     mainMenu=glutCreateMenu(mymenu);
-    glutAddMenuEntry("Toggle Flipping", noOfPages);
+    glutAddMenuEntry("Toggle Flipping", 11);
     glutAddMenuEntry("Next Page", 1);
     glutAddMenuEntry("Previous Page", 2);
     glutAddSubMenu("View Types", viewMenu);
