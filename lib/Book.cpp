@@ -108,6 +108,7 @@ void constructPolygon(GLfloat vertices[][3]){
     \brief Select each face and construct a Polygon
 */
 void Book::fillFaces(GLfloat xLimit, GLfloat yLimit, GLfloat zLimit){
+    glColor3f(0.5,0,0.5);
     GLfloat backFace[][3]={
         {x, y, zLimit}, {xLimit, y, zLimit}, {xLimit, yLimit, zLimit}, {x, yLimit, zLimit}
     };
@@ -128,4 +129,5 @@ void Book::fillFaces(GLfloat xLimit, GLfloat yLimit, GLfloat zLimit){
         {xLimit,y,zLimit},{xLimit,yLimit,zLimit},{xLimit,yLimit,z},{xLimit,yLimit,z}
     };
     constructPolygon(rightFace);
+    glColor3f(1,1,1);
 }
