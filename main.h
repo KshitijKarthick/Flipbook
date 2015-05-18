@@ -31,6 +31,8 @@ int showWelcomeScreen = 1;
 int startFlipping = 1;
 int pauseFlipping = 0;
 int noOfPages = 25;
+int allowBookMovement = 0;
+GLfloat translateBookbyY=0, translateBookbyX=0;
 char wallImageFilename[]="../img/wall.bmp";
 char welcomeImageFilename[]="../img/welcome.jpg";
 char picImageFilename[]="../img/pic.bmp";

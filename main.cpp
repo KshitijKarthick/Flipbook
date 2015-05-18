@@ -214,6 +214,9 @@ void display(){
                 glTranslatef(-80, -110, -150);
                 glRotatef(-90, 1, 0, 0);
             }
+            else{
+                glTranslatef(translateBookbyX,translateBookbyY,50);
+            }
             flipbook->renderBook(); /*!< Render Flipbook */
             glPushMatrix();
                 glTranslatef(0,PAGE_HEIGHT+BOOK_BORDER_SIZE,0);
@@ -262,6 +265,21 @@ void mykeyboard(unsigned char key, GLint x,GLint y){
 }
 
 /*!
+    \fn myMouseMovement(int x, int y)
+    \brief Mouse interaction for movement of Book
+*/
+void myMouseMovement(int x, int y){
+    if(allowBookMovement == 1){
+        float centerX = (float)WINDOW_WIDTH / 2.0;
+        float centerY = (float)WINDOW_HEIGHT / 2.0;
+        float deltaX = (x - centerX)*5;
+        float deltaY = (y - centerY)*5;
+        translateBookbyX += deltaX / (float)WINDOW_WIDTH;
+        translateBookbyY -= deltaY / (float)WINDOW_HEIGHT;
+    }
+}
+
+/*!
     \fn mymenu(int id)
     \brief Mouse interaction in selection of menu
     Callback function for mouse input interaction.
@@ -307,6 +325,8 @@ void mymenu(int id /*!< Menu id picked by the user */){
             viewId = 4;break; /*!< 360 deg Vertical View */
         case 15:
             viewId = 5;break; /*!< 360 deg Horizontal and Vertical View */
+        case 16:
+            allowBookMovement = !allowBookMovement;
     }
     glutPostRedisplay();
 }
@@ -354,6 +374,7 @@ void addMenuInteraction(){
     glutAddSubMenu("Flip Types", flipMenu);
     glutAddMenuEntry("Speed Up", 12);
     glutAddMenuEntry("Speed Down", 13);
+    glutAddMenuEntry("Toggle Book Movement",16);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 /*!
@@ -382,6 +403,8 @@ int main(int argc, char **argv){
     glEnable(GL_COLOR_MATERIAL);
     glutKeyboardFunc(mykeyboard);
     glutIdleFunc(idleStateExecute);
+    glutPassiveMotionFunc(myMouseMovement);
+    glutSetCursor(GLUT_CURSOR_FULL_CROSSHAIR);
     glEnable(GL_DEPTH_TEST);
     glutMainLoop();
 }
