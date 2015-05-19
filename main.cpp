@@ -257,6 +257,12 @@ void mykeyboard(unsigned char key, GLint x,GLint y){
         startFlipping = 0;
         pageAngle = 0;
     }
+    else if(key == 'W' || key == 'w'){
+        showWelcomeScreen = 1;
+        startFlipping = 1;
+    }
+    else if(key == 'q' || key == 'Q')
+        exit(0);
     else if(key == 61)
         speed += 1; /*!< Increase speed */
     else if(key == 45)
