@@ -4,8 +4,8 @@ FLAGS = -Wall -std=c++11
 all : build/flipbook
 
 clean :
-	test -d "build" && rm -r build && echo "build cleaned";
-	test -d "documentation" && rm -r documentation && echo "documentation cleaned";
+	rm -r build
+	rm -r documentation
 
 run : build/flipbook
 	cd build && ./flipbook
