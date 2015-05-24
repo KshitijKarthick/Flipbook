@@ -197,7 +197,6 @@ void cubeConstruction(GLfloat x, GLfloat y, GLfloat z, GLfloat xLimit, GLfloat y
         {x, y, z}, {xLimit, y, z}, {xLimit, yLimit, z}, {x, yLimit, z},
         {x, y, zLimit}, {xLimit, y, zLimit}, {xLimit, yLimit, zLimit}, {x, yLimit, zLimit}
     };
-    glPointSize(5.0);
     squareConstruction(0,3,2,1,vertices);
     squareConstruction(2,3,7,6,vertices);
     squareConstruction(0,4,7,3,vertices);
